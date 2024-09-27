@@ -40,7 +40,7 @@ class HomeScreenState extends State<_HomeScreenState> {
                 const Column(
                   children: [
                     Text(
-                      'SanDiegeo, ' 'USA',
+                      'SanDiego, ' 'USA',
                       style: TextStyle(),
                     ),
                   ],
