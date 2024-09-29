@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
 
 class _HomeScreenState extends StatefulWidget {
-  const _HomeScreenState({super.key});
+  const _HomeScreenState();
 
   @override
   State<_HomeScreenState> createState() => HomeScreenState();
@@ -33,21 +33,21 @@ class HomeScreenState extends State<_HomeScreenState> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   onPressed: () {},
-                  icon: Icon(Icons.menu),
+                  icon: const Icon(Icons.menu),
                 ),
                 const Column(
                   children: [
                     Text(
-                      'SanDiego, ' 'USAs',
+                      'SanDiego, ' 'USA',
                       style: TextStyle(),
                     ),
                   ],
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                 ),
               ],
             ),
