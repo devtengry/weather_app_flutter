@@ -64,7 +64,7 @@ class HomeScreenState extends State<_HomeScreenState> {
             '25',
             style: TextStyle(fontSize: 70, fontWeight: FontWeight.bold),
           ),
-          Text('Stormy'),
+          Text('Rainy'),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
