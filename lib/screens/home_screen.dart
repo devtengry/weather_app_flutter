@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String temperature = "";
   String weatherDescription = "";
   String windSpeed = "";
-  String humidity = "-"; // Başlangıç değeri "-"
+  String humidity = "-";
   bool isLoading = true;
 
   final LocationService _locationService = LocationService();
@@ -41,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       setState(() {
-        city = data['address']['city'] ?? data['address']['town'] ?? "Unknown location";
+        city = data['address']['city'] ??
+            data['address']['town'] ??
+            "Unknown location";
       });
     } else {
       setState(() {
@@ -56,8 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         temperature = data['current_weather']['temperature'].toString();
         windSpeed = data['current_weather']['windspeed'].toString();
-        humidity = data['current_weather']['relativehumidity']?.toString() ?? "-"; // null kontrolü
-        weatherDescription = _mapWeatherCodeToDescription(data['current_weather']['weathercode']);
+        humidity = data['current_weather']['relativehumidity']?.toString() ??
+            "-"; // null kontrolü
+        weatherDescription = _mapWeatherCodeToDescription(
+            data['current_weather']['weathercode']);
         isLoading = false;
       });
     } catch (e) {
@@ -70,24 +74,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String _mapWeatherCodeToDescription(int code) {
     switch (code) {
-      case 0: return "Clear Sky";
-      case 1: return "Mainly Clear";
-      case 2: return "Partly Cloudy";
-      case 3: return "Overcast";
-      case 45: return "Foggy";
-      case 48: return "Depositing Rime Fog";
-      case 51: return "Drizzle: Light";
-      case 53: return "Drizzle: Moderate";
-      case 55: return "Drizzle: Dense";
-      case 61: return "Rain: Slight";
-      case 63: return "Rain: Moderate";
-      case 65: return "Rain: Heavy";
-      case 80: return "Rain Showers: Slight";
-      case 81: return "Rain Showers: Moderate";
-      case 82: return "Rain Showers: Violent";
-      case 95: return "Thunderstorm: Slight";
-      case 96: return "Thunderstorm: Moderate";
-      default: return "Unknown Weather";
+      case 0:
+        return "Clear Sky";
+      case 1:
+        return "Mainly Clear";
+      case 2:
+        return "Partly Cloudy";
+      case 3:
+        return "Overcast";
+      case 45:
+        return "Foggy";
+      case 48:
+        return "Depositing Rime Fog";
+      case 51:
+        return "Drizzle: Light";
+      case 53:
+        return "Drizzle: Moderate";
+      case 55:
+        return "Drizzle: Dense";
+      case 61:
+        return "Rain: Slight";
+      case 63:
+        return "Rain: Moderate";
+      case 65:
+        return "Rain: Heavy";
+      case 80:
+        return "Rain Showers: Slight";
+      case 81:
+        return "Rain Showers: Moderate";
+      case 82:
+        return "Rain Showers: Violent";
+      case 95:
+        return "Thunderstorm: Slight";
+      case 96:
+        return "Thunderstorm: Moderate";
+      default:
+        return "Unknown Weather";
     }
   }
 
@@ -101,7 +123,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 156, 211, 255), Color.fromARGB(255, 28, 153, 255), Color.fromARGB(255, 69, 0, 166)],
+            colors: [
+              Color.fromARGB(255, 156, 211, 255),
+              Color.fromARGB(255, 28, 153, 255),
+              Color.fromARGB(255, 69, 0, 166)
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -126,7 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 10),
                       Text(
                         weatherDescription,
-                        style: const TextStyle(fontSize: 24, color: Colors.black54),
+                        style: const TextStyle(
+                            fontSize: 24, color: Colors.black54),
                       ),
                       const SizedBox(height: 30),
                       // Weather info cards
@@ -170,7 +197,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: WeatherCard(
                                     icon: Icons.opacity_rounded,
                                     label: 'Humidity',
-                                    value: '$humidity%', // Null kontrolü yapılmış değer
+                                    value:
+                                        '$humidity%', // Null kontrolü yapılmış değer
                                   ),
                                 ),
                               ],
@@ -194,7 +222,10 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         backgroundColor: const Color.fromARGB(168, 42, 42, 42),
-        child: const Icon(Icons.refresh, color: Color.fromARGB(164, 255, 255, 255),),
+        child: const Icon(
+          Icons.refresh,
+          color: Color.fromARGB(164, 255, 255, 255),
+        ),
       ),
     );
   }
