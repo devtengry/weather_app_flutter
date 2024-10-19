@@ -16,5 +16,4 @@ class WeatherService {
   }
 }
 
-class HumidityData {}
-class RainData {}
+
