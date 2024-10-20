@@ -16,4 +16,4 @@ class WeatherService {
   }
 }
 
-
+class ApiTest {}
